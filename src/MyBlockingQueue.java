@@ -29,8 +29,6 @@ public class MyBlockingQueue {
             }
         }
         queue.add(task);
-        System.out.println(Thread.currentThread() + " добавил задачу номер " + task);
-        System.out.println("Текущий размер очереди = " + size());
         notify();
 
     }
@@ -44,8 +42,6 @@ public class MyBlockingQueue {
             }
         }
         Task task = queue.removeLast();
-        System.out.println(Thread.currentThread() + " выполнил задачу номер " + task);
-        System.out.println("Текущий размер очереди = " + size());
         notify();
     }
 
