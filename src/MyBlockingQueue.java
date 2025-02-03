@@ -2,9 +2,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class MyBlockingQueue {
-    int capacity;
-    List<Task> queue;
-    int currentSize;
+    private final int capacity;
+    private final List<Task> queue;
+
 
     public MyBlockingQueue() {
         this.capacity = 10;
@@ -21,7 +21,7 @@ public class MyBlockingQueue {
     }
 
     public synchronized void enqueue(Task task) {
-        while (currentSize >= capacity-1) {
+        while (queue.size()>= capacity-1) {
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -29,7 +29,6 @@ public class MyBlockingQueue {
             }
         }
         queue.add(task);
-        currentSize++;
         System.out.println(Thread.currentThread() + " добавил задачу номер " + task);
         System.out.println("Текущий размер очереди = " + size());
         notify();
@@ -45,13 +44,12 @@ public class MyBlockingQueue {
             }
         }
         Task task = queue.removeLast();
-        currentSize--;
         System.out.println(Thread.currentThread() + " выполнил задачу номер " + task);
         System.out.println("Текущий размер очереди = " + size());
         notify();
     }
 
-    public int size() {
-        return currentSize;
+    public synchronized int size() {
+        return queue.size();
     }
 }

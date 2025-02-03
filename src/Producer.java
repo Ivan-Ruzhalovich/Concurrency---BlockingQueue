@@ -1,5 +1,5 @@
 public class Producer implements Runnable {
-    MyBlockingQueue queue;
+    private final MyBlockingQueue queue;
 
     public Producer(MyBlockingQueue queue) {
         this.queue = queue;

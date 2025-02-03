@@ -1,7 +1,7 @@
 import java.util.UUID;
 
 public class Task {
-    UUID uuid;
+    private final UUID uuid;
 
     public Task() {
         this.uuid = UUID.randomUUID();
@@ -9,6 +9,6 @@ public class Task {
 
     @Override
     public String toString() {
-        return  " "+ uuid;
+        return  " " + uuid;
     }
 }

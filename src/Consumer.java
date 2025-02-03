@@ -1,6 +1,5 @@
 public class Consumer implements Runnable {
-
-    MyBlockingQueue queue;
+    private final MyBlockingQueue queue;
 
     public Consumer(MyBlockingQueue queue) {
         this.queue = queue;
